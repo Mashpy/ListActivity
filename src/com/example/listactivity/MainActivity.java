@@ -1,13 +1,14 @@
 package com.example.listactivity;
-
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends ActionBarActivity {
 	
@@ -22,6 +23,16 @@ public class MainActivity extends ActionBarActivity {
 				R.layout.simplerow, countryArray);
 				ListView listView = (ListView) findViewById(R.id.mainListView);
 				listView.setAdapter(adapter); 
+				
+				listView.setOnItemClickListener(new OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView<?> adapterView, View view, int position, long offset) {		
+					Intent intent = new Intent(getApplicationContext(), NextActivity.class);
+					intent.putExtra("New_Topic", "abc");
+					startActivity(intent); 
+					}
+				});
 	}
 	
 	
